@@ -12,7 +12,14 @@ import lombok.Data;
 @ConfigurationProperties(prefix = "twitter-to-kafka-service")
 public class TwitterToKafkaServiceConfigData {
 	private List<String> twitterKeywords;
-	
 	private String welcomeMessage;
+    private Long mockSleepMs;
+    private Integer mockMinTweetLength;
+    private Integer mockMaxTweetLength;
+	
+	public String[] getTwitterKeywordsAsArray() {
+		
+		return twitterKeywords.toArray(new String[0]);		
+	}
 
 }
