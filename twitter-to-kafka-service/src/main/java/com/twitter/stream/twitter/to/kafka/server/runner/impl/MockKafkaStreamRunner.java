@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.twitter.stream.twitter.to.kafka.server.config.TwitterToKafkaServiceConfigData;
+import com.twitter.stream.config.TwitterToKafkaServiceConfigData;
 import com.twitter.stream.twitter.to.kafka.server.exception.TwitterToKafkaServiceException;
 import com.twitter.stream.twitter.to.kafka.server.listener.TwitterKafkaStatusListener;
 import com.twitter.stream.twitter.to.kafka.server.runner.StreamRunner;

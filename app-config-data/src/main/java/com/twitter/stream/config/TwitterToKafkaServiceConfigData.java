@@ -1,4 +1,4 @@
-package com.twitter.stream.twitter.to.kafka.server.config;
+package com.twitter.stream.config;
 
 import java.util.List;
 
