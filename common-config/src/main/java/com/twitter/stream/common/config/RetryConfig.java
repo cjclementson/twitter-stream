@@ -1,11 +1,17 @@
 package com.twitter.stream.common.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.retry.backoff.ExponentialBackOffPolicy;
+import org.springframework.retry.policy.SimpleRetryPolicy;
+import org.springframework.retry.support.RetryTemplate;
+
+import com.twitter.stream.config.RetryConfigData;
 
 @Configuration
 public class RetryConfig {
 	
-	/*private final RetryConfigData retryConfigData;
+	private final RetryConfigData retryConfigData;
 
     public RetryConfig(RetryConfigData configData) {
         this.retryConfigData = configData;
@@ -28,6 +34,6 @@ public class RetryConfig {
         retryTemplate.setRetryPolicy(simpleRetryPolicy);
 
         return retryTemplate;
-    }*/
+    }
 
 }

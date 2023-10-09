@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "retry-cofig")
+@ConfigurationProperties(prefix = "retry-config")
 public class RetryConfigData {
 	
 	private Long initialIntervalMs;
