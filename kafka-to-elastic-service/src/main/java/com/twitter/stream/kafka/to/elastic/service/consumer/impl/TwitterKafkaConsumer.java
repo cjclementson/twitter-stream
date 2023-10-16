@@ -1,10 +1,13 @@
 package com.twitter.stream.kafka.to.elastic.service.consumer.impl;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.bouncycastle.util.Integers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
 import org.springframework.kafka.support.KafkaHeaders;
@@ -27,8 +30,6 @@ public class TwitterKafkaConsumer implements KafkaConsumer<Long, TwitterAvroMode
 	private final KafkaAdminClient kafkaAdminClient;
 	
 	private final KafkaConfigData kafkaConfigData;
-	
-	
 
 	public TwitterKafkaConsumer(KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry,
 			KafkaAdminClient kafkaAdminClient, KafkaConfigData kafkaConfigData) {
@@ -36,6 +37,14 @@ public class TwitterKafkaConsumer implements KafkaConsumer<Long, TwitterAvroMode
 		this.kafkaListenerEndpointRegistry = kafkaListenerEndpointRegistry;
 		this.kafkaAdminClient = kafkaAdminClient;
 		this.kafkaConfigData = kafkaConfigData;
+	}
+	
+	@EventListener
+	public void OnAppStarted(ApplicationStartedEvent event) {
+		kafkaAdminClient.checkTopicsCreated();
+		LOG.info("Topics with name {} is ready for operations!", kafkaConfigData.getTopicNamesToCreate().toArray());
+        //kafkaListenerEndpointRegistry.getListenerContainer(kafkaConsumerConfigData.getConsumerGroupId())).start();
+		kafkaListenerEndpointRegistry.getListenerContainer("twitterTopicListener").start();
 	}
 
 

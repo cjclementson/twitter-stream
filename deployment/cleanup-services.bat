@@ -18,3 +18,12 @@ docker rm docker-compose-kafka-broker-3-1
 
 docker stop docker-compose-zookeeper-1
 docker rm docker-compose-zookeeper-1
+
+docker stop elastic-1-1
+docker rm elastic-1-1
+
+docker stop elastic-2-1
+docker rm elastic-2-1
+
+docker stop elastic-3-1
+docker rm elastic-3-1
